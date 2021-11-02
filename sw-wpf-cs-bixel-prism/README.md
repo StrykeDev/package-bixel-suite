@@ -7,7 +7,7 @@
 
 A Light synchronizer software for Asus Aura, AlienFX, and Corsair iCUE devices.
 
-## Instalation
+## Installation
 
 Compile and run.
 
