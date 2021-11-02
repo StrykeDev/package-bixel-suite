@@ -6,3 +6,4 @@
 # Bixel WPF Theme
 
 Main WPF theme for all Bixel's WPF software.
+ 
