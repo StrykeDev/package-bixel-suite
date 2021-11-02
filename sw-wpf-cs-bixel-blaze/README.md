@@ -1,8 +1,8 @@
 
 <p align="center">
-  <img height="100" src="https://github.com/StrykeDev/bixel-suite/blob/main/bixel-php-website/assats/brand/Logo_Bixel_G_x256.png">
+  <img height="100" src="https://github.com/StrykeDev/package-bixel-suite/blob/master/sw-wpf-cs-bixel-blaze/Blaze/Resources/Icons/Icon_Blaze_x256.png">
 </p>
 
-# Bixel Suite
+# Blaze
 
-A software suite to improve productivity
+A Multi-monitors manager software.
