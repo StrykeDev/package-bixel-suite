@@ -7,6 +7,6 @@
 
 A Multi-monitors manager software.
 
-## Instalation
+## Installation 
 
 Compile and run.
