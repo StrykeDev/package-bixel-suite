@@ -3,6 +3,6 @@
   <img height="100" src="https://github.com/StrykeDev/bixel-suite/blob/main/bixel-php-website/assats/brand/Logo_Bixel_G_x256.png">
 </p>
 
-# Bixel Suite
+# Bixel WPF Theme
 
-A software suite to improve productivity
+Main WPF theme for all Bixel's WPF software.
