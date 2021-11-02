@@ -1,0 +1,39 @@
+[{
+    "product_id": "blaze",
+    "product_name": "Blaze",
+    "faq": [{
+            "question": "Blaze slowing down my PC",
+            "answer": "Blaze shouldn't use more than about 5% CPU usage, If it does try to reinstall Blaze with a fresh installtion from <a href=\"/product.php?id=blaze\">here</a>.<br>If that didn't resolve the issue please <a href=\"/support-center.php\">contact us</a> via support ticket with a DXDIAG file.",
+            "dxdiag": true
+        },
+        {
+            "question": "I got only one monitor, Will Blaze still work?",
+            "answer": "Well... kinda, Blaze made mainly to handle multi-monitors setups.<br>Although you can still use some features like Cursor-Lock.",
+            "dxdiag": false
+        },
+        {
+            "question": "Will Blaze get support for more platforms?",
+            "answer": "Not in the foreseeable future... Sorry about that.",
+            "dxdiag": false
+        }
+    ]
+}, {
+    "product_id": "prism",
+    "product_name": "Prism",
+    "faq": [{
+            "question": "Prism slowing down my PC",
+            "answer": "Some old PC might struggle a bit with it.<br>If your PC is too old you can try lowering the refrash rate in the settings or disable the effect.<br><br>If your PC is pretty good then you should try to reinstall Prism using a fresh installtion from <a href=\"/product.php?id=prsim\">here</a>.<br>If that didn't resolve the issue please <a href=\"/support-center.php\">contact us</a> via support ticket with a DXDIAG file.",
+            "dxdiag": true
+        },
+        {
+            "question": "Prism doesn't detect my device",
+            "answer": "Please check with the device manufacturer that the device support one of the APIs listed <a href=\"/product.php?id=prsim\">here</a>.<br>If it does then please <a href=\"/support-center.php\">contact us</a> via support ticket with the device model and we will look into it.<br>If the device doesn't support one of the APIs then you can send us a <a href=\"/support-center.php\">feedback</a> and maybe we will be able to make a support for your device one day.",
+            "dxdiag": false
+        },
+        {
+            "question": "Will Prism get support for more platforms?",
+            "answer": "Not in the foreseeable future... Sorry about that.",
+            "dxdiag": false
+        }
+    ]
+}]

@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="Prism.Views.MiniColorPicker"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Prism.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="80" d:DesignWidth="420">
+
+    <Viewbox VerticalAlignment="Top">
+        <StackPanel Orientation="Horizontal">
+            <StackPanel>
+                <Label Content="Hex: "/>
+                <Grid>
+                    <TextBox Text="#000000"/>
+                </Grid>
+            </StackPanel>
+
+            <Separator RenderTransformOrigin="0.5,0.5" Height="5" Width="40" Margin="-15">
+                <Separator.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Separator.RenderTransform>
+            </Separator>
+
+            <StackPanel>
+                <Label Content="Red: "/>
+                <TextBox Text="0" MinWidth="85"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Green: "/>
+                <TextBox Text="0" MinWidth="85"/>
+            </StackPanel>
+            <StackPanel>
+                <Label Content="Blue: "/>
+                <TextBox Text="0" MinWidth="85"/>
+            </StackPanel>
+        </StackPanel>
+    </Viewbox>
+</UserControl>

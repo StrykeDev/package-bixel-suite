@@ -1,0 +1,31 @@
+[{
+        "amount": 1,
+        "desc": "Buy us a dollar store item.",
+        "icon": "/tiers/icons/hand.png"
+    },
+    {
+        "amount": 15,
+        "desc": "Buy us some food.",
+        "icon": "/tiers/icons/pizza_slice.png"
+    },
+    {
+        "amount": 50,
+        "desc": "Buy us a video game.",
+        "icon": "/tiers/icons/console.png"
+    },
+    {
+        "amount": 100,
+        "desc": "Buy us a 1 day trip.",
+        "icon": "/tiers/icons/sunset.png"
+    },
+    {
+        "amount": 250,
+        "desc": "Upgrade our systems.",
+        "icon": "/tiers/icons/computer.png"
+    },
+    {
+        "amount": 500,
+        "desc": "Upgrade our office.",
+        "icon": "/tiers/icons/chair.png"
+    }
+]

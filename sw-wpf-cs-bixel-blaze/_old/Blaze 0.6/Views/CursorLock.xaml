@@ -1,0 +1,94 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Blaze.Views"
+             xmlns:converters="clr-namespace:Blaze.Converters"
+             xmlns:Blaze="clr-namespace:Blaze" x:Class="Blaze.Views.CursorLock"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="{DynamicResource Base}">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Resources\Style.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <converters:IntToString x:Key="IntToString"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--Tutorial text-->
+        <Grid>
+            <StackPanel >
+                <TextBlock TextWrapping="Wrap"><Run Text="The mouse cursor will be limited to the marked area."/><LineBreak /><Run Text="Holding Shift, Ctrl or Alt will disable Cursor Lock until the cursor is back in the marked area."/><LineBreak /><Run Text="Toggling Scroll-Lock will disable Cursor Lock until toggled back."/></TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <!--Main panel-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid >
+                <StackPanel>
+                    <Label Content="Height"/>
+                    <TextBox x:Name="tbHeight" Text="{Binding PreviewHeight, Converter={StaticResource IntToString}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Content="Width"/>
+                    <TextBox x:Name="tbWidth" Text="{Binding PreviewWidth, Converter={StaticResource IntToString}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Content="X"/>
+                    <TextBox x:Name="tbX" Text="{Binding PreviewX, Converter={StaticResource IntToString}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Content="Y"/>
+                    <TextBox x:Name="tbY" Text="{Binding PreviewY, Converter={StaticResource IntToString}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+
+                <StackPanel VerticalAlignment="Bottom">
+                    <Button x:Name="btnReset" Content="Reset" Click="BtnReset_Click" />
+                    <Button x:Name="btnDetect" Content="Detect"  Click="BtnDetect_Click" />
+                </StackPanel>
+            </Grid>
+
+            <!--Preview canvas-->
+            <Grid Grid.Column="1" Margin="5">
+                <UniformGrid>
+                    <Rectangle Fill="{StaticResource Background}" Margin="-1" Stroke="{StaticResource Border}"/>
+                    <Rectangle Fill="{StaticResource Background}" Margin="-1" Stroke="{StaticResource Border}"/>
+                    <Rectangle Fill="{StaticResource Background}" Margin="-1" Stroke="{StaticResource Border}"/>
+                    <Rectangle Fill="{StaticResource Background}" Margin="-1" Stroke="{StaticResource Border}"/>
+                </UniformGrid>
+
+                <Viewbox ClipToBounds="False" Stretch="Uniform">
+                    <Canvas x:Name="canvasPreview" Width="1000" Height="1000" >
+                        <ContentControl x:Name="ccZonePreview" Panel.ZIndex="99" Width="500" Height="500" Canvas.Left="250" Canvas.Top="250">
+                            <Rectangle StrokeThickness="20" Stroke="{DynamicResource Accent}"/>
+                        </ContentControl>
+                    </Canvas>
+                </Viewbox>
+            </Grid>
+        </Grid>
+
+        <!-- Undo and save -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="lblCopyright" Content="{Binding Copyright, Mode=OneTime, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Blaze:MainWindow}}}" Foreground="{StaticResource Mute}"/>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" >
+                <Button x:Name="btnUndo" Content="Undo" Click="BtnUndo_Click"/>
+                <Button x:Name="btnApply" Content="Apply" Click="BtnApply_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

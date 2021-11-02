@@ -1,0 +1,131 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Blaze.Views"
+             xmlns:converters="clr-namespace:Blaze.Converters"
+             xmlns:Blaze="clr-namespace:Blaze" x:Class="Blaze.Views.MonitorDim"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="{DynamicResource Base}">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Resources\DarkTheme.xaml"/>
+                <ResourceDictionary Source="..\Resources\Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <converters:StringValue x:Key="StringValue"/>
+            <converters:BlacklistBool x:Key="BlacklistBool"/>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--Tutorial Text-->
+        <Grid>
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap"><Run Text="Dim inactive monitors when the active application is running on fullscreen or borderless mode."/><LineBreak/><Run Text="Use fade delay to minimize unwanted dimming."/><LineBreak/><Run Text="Use blacklist to ignore the listed apps or whitelist to allow only the listed apps."/><LineBreak/></TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Options-->
+            <Grid x:Name="grdOptions">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Opacity:" />
+                            <Label Content="{Binding Value, ConverterParameter=%, Converter={StaticResource StringValue}, ElementName=sldOpacity, Mode=OneWay}"/>
+                        </StackPanel>
+                        <Slider x:Name="sldOpacity" Minimum="0" Maximum="1" Value="{Binding DimOpacity, Mode=TwoWay}" LargeChange="0.1" SmallChange="0.01" IsDirectionReversed="True"/>
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Begin delay:" />
+                            <Label Content="{Binding Value, ConverterParameter=s, Converter={StaticResource StringValue}, ElementName=sldDelay, Mode=OneWay}"/>
+                        </StackPanel>
+                        <Slider x:Name="sldDelay" Minimum="0" Maximum="5" Value="{Binding DimDelay, Mode=TwoWay}" LargeChange="0.1" SmallChange="0.01"/>
+
+
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Fading speed:  " />
+                            <Label Content="{Binding Value, ConverterParameter=s, Converter={StaticResource StringValue}, ElementName=sldFadeSpeed, Mode=OneWay}"/>
+                        </StackPanel>
+                        <Slider x:Name="sldFadeSpeed" Minimum="0" Maximum="5" Value="{Binding DimSpeed, Mode=TwoWay}" LargeChange="0.1" SmallChange="0.01"/>
+
+                        <Separator/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="1" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="btnMode" Content="{Binding BlacklistMode, Converter={StaticResource BlacklistBool}, Mode=OneWay}" Click="BtnMode_Click" ToolTip="Click here to change blocking mode." />
+                    <ListBox x:Name="lbBlacklist" Grid.Row="1" Margin="5" Background="{DynamicResource Background}" BorderBrush="{DynamicResource Border}" Foreground="{DynamicResource Highlight}"/>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="tbxAppName" />
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <Button x:Name="btnAdd" Content="+" Click="BtnAdd_Click" MinWidth="30" ToolTip="Type the name of the app as shown in task manager (without '.exe') in the box on the left then click here to add it."/>
+                        <Button x:Name="btnRemove" Content="-" Click="BtnRemove_Click" MinWidth="30" ToolTip="Select a name from the list then click here to remove it."/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <!--Preview-->
+            <Grid Grid.Column="1" Margin="5" MouseDown="Grid_MouseDown">
+                <Grid Height="75" Panel.ZIndex="99" VerticalAlignment="Top" Margin="-1">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="{StaticResource BaseColor}" Offset="0"/>
+                            <GradientStop Color="{StaticResource FadeBaseColor}" Offset="1" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Label x:Name="lblPreview" Content="Click on the image to preview" VerticalContentAlignment="Top"/>
+                </Grid>
+                <Image Source="..\Assats\Images\MonitorDim\ex_image.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Panel.ZIndex="-1" />
+                <Rectangle x:Name="recDimmerPreview" Opacity="{Binding Path=DimOpacity, Mode=OneWay}" Fill="Black"/>
+            </Grid>
+        </Grid>
+
+        <!-- Undo and apply -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Label x:Name="lblCopyright" Content="{Binding Copyright, Mode=OneTime, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Blaze:MainWindow}}}" Foreground="{StaticResource Mute}"/>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" >
+                <Button x:Name="btnUndo" Content="Undo" Click="BtnUndo_Click"/>
+                <Button x:Name="btnApply" Content="Apply" Click="BtnApply_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

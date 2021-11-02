@@ -1,0 +1,44 @@
+
+
+
+
+
+
+Sources:
+	Color
+	Gradient
+	Rainbow
+	
+	
+Effects:
+	Static: 	Always on
+	Flickering: Flickering
+	Breathing: 	Fading in and out
+	Scan: 		Fading between devices
+	
+	
+Settings:
+	Refresh Rate: 	Maximum times in a second that the LEDs will update.
+					Higher values will look smoother but will have larger impact on performance.
+		Slider: 	5~20, With an option to extend the range up to 60 with a warning.
+		Warning: 	Selecting rates that are too high can shorten the LED life span.
+		Default: 	20
+	
+	Clamp Mode: 	Prevent the LED from overheating but will dim colors that are close to white.
+		Radio: 		Disabled 	Enabled
+		Default: 	Enabled
+		
+	Update Static:	Keep updating static light every 1 second.
+		Radio: 		Disabled 	Enabled
+		Default: 	Enabled
+	
+	Gaming Mode: 	Change the refresh rate based on CPU usage to increase performance.
+		Radio: 		Disabled 	Enabled  	Pause completely
+		Default:	Enabled
+		
+	Time out: 		Dim the LEDs when you are AFK.
+		Radio: 		Disabled 	Enabled		Pause completely
+		Time: 		1(in minutes)
+		List: 		0%, 10%, 20% ... 70%, 80%, 90%
+		Default: 	Disabled
+		

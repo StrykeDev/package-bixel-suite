@@ -1,0 +1,159 @@
+﻿<UserControl x:Class="Blaze.Views.MonitorDim"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Blaze"
+             xmlns:vm="clr-namespace:Blaze.ViewModels"
+             xmlns:converters="clr-namespace:Blaze.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="1000" 
+             Background="{DynamicResource BaseBrush}" Foreground="{DynamicResource TextBrush}">
+
+    <UserControl.DataContext>
+        <vm:MonitorDim/>
+    </UserControl.DataContext>
+   
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--Tutorial Text-->
+        <Grid>
+            <StackPanel>
+                <TextBlock TextWrapping="Wrap" Margin="5">
+                    Dim inactive monitors when the active application is running on fullscreen or borderless mode.<LineBreak/>
+                    Use fade delay to minimize unwanted dimming.<LineBreak/>
+                    Use blacklist to ignore the listed apps or whitelist to allow only the listed apps.
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Options-->
+            <Grid x:Name="grdOptions">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <StackPanel>
+                        <Grid>
+                            <Label Content="Dim:" />
+                            <Label Content="{Binding DimOpacityPercent}" HorizontalAlignment="Right"/>
+                        </Grid>
+                        <Slider Minimum="0" Maximum="1" Value="{Binding DimOpacity, Mode=TwoWay}" LargeChange="0.1" SmallChange="0.01"/>
+
+                        <Grid>
+                            <Label Content="Fading speed:  " />
+                            <Label Content="{Binding DimSpeedMS}" HorizontalAlignment="Right"/>
+                        </Grid>
+                        <Slider Minimum="0" Maximum="5" Value="{Binding DimSpeed, Mode=TwoWay}" LargeChange="0.1" SmallChange="0.001"/>
+
+                        <Grid>
+                            <Label Content="Start delay:" />
+                            <Label Content="{Binding DimDelayMS}" HorizontalAlignment="Right"/>
+                        </Grid>
+                        <Slider Minimum="0" Maximum="5" Value="{Binding DimDelay, Mode=TwoWay}" LargeChange="0.1" SmallChange="0.001"/>
+                        
+                        <Separator/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="1" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Button Content="{Binding ListModeLable}" Command="{Binding Mode}" ToolTip="Click here to change blocking mode." />
+                    <ListBox ItemsSource="{Binding AppList, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" SelectedIndex="{Binding Selected, Mode=TwoWay}" Grid.Row="1"/>
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBox x:Name="tbxAppName" Text="{Binding AppName, Mode=TwoWay}"/>
+
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <Button Content="+" Command="{Binding Add}" MinWidth="30" ToolTip="Type the name of the app as shown in task manager in the box on the left then click here to add it."/>
+                        <Button Content="-" Command="{Binding Remove}" MinWidth="30" ToolTip="Select a name from the list then click here to remove it."/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+
+            <!--Preview-->
+            <Grid Grid.Column="1" Margin="5" Cursor="Hand">
+                <Grid Height="75" Panel.ZIndex="99" VerticalAlignment="Top" Margin="-1">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="{DynamicResource BaseColor}" Offset="0"/>
+                            <GradientStop Color="{DynamicResource FadeBaseColor}" Offset="1" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Label Margin="10" Content="Click and hold to preview fading speed." VerticalContentAlignment="Top"/>
+                </Grid>
+                <Image Source="{StaticResource DesktopPreview}" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Panel.ZIndex="-1" />
+                
+                <Rectangle x:Name="dimmer" Opacity="{Binding DimOpacity, Mode=OneWay}" Fill="Black"/>
+                
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="Rectangle.MouseDown">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation 
+                                    Storyboard.TargetName="dimmer"
+                                    Storyboard.TargetProperty="Opacity"
+                                    Duration="{Binding DimSpeed, Mode=OneWay, Converter={StaticResource ToDuration}}"
+                                    To="0"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                    <EventTrigger RoutedEvent="Rectangle.MouseUp">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation 
+                                    Storyboard.TargetName="dimmer"
+                                    Storyboard.TargetProperty="Opacity"
+                                    Duration="{Binding DimSpeed, Mode=OneWay, Converter={StaticResource ToDuration}}" 
+                                    To="{Binding DimOpacity, Mode=OneWay}"
+                                    FillBehavior="Stop"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+            </Grid>
+        </Grid>
+
+        <!-- Undo and apply -->
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="{Binding Copyright, Mode=OneTime}" Foreground="{DynamicResource MuteBrush}">
+                <Label.DataContext>
+                    <vm:MainViewModel/>
+                </Label.DataContext>
+            </Label>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" >
+                <Button Content="Undo" Command="{Binding Undo}"/>
+                <Button Content="Apply" Command="{Binding Apply}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

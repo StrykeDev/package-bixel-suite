@@ -1,0 +1,46 @@
+[{
+        "code": 0,
+        "name": "Generic",
+        "desc": "Well something isn't working correctly and we don't know what."
+    },
+    {
+        "code": 200,
+        "name": "Ok",
+        "desc": "Mmm...? Hello?<br>Everything seems fine, What are you doing here?"
+    },
+    {
+        "code": 400,
+        "name": "Bad Request",
+        "desc": "We couldn't prossess this request."
+    },
+    {
+        "code": 401,
+        "name": "Unauthorized",
+        "desc": "You're not supposed to be here, leave!"
+    },
+    {
+        "code": 403,
+        "name": "Forbidden",
+        "desc": "Huh, Something broke...<br>Maybe try again later?"
+    },
+    {
+        "code": 404,
+        "name": "Not Found",
+        "desc": "We couldn't find the page that you were looking for."
+    },
+    {
+        "code": 408,
+        "name": "Request Timeout",
+        "desc": "We couldn't prossess the request on time."
+    },
+    {
+        "code": 429,
+        "name": "Too Many Requests",
+        "desc": "Wow slow down there buddy."
+    },
+    {
+        "code": 500,
+        "name": "Internal Server Error",
+        "desc": "We are probably under a DDOS attack, hold on."
+    }
+]

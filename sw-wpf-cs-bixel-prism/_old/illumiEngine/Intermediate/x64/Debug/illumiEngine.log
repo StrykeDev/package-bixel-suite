@@ -1,0 +1,16 @@
+﻿  D:\Projects\Apps\illumi\illumiEngine\illumiEngine\External\AURA_SDK.dll
+  D:\Projects\Apps\illumi\illumiEngine\illumiEngine\External\ClaymoreProtocol.dll
+  D:\Projects\Apps\illumi\illumiEngine\illumiEngine\External\EVOLVE SYNC Dll.dll
+  D:\Projects\Apps\illumi\illumiEngine\illumiEngine\External\LED_DLL_forMB.dll
+  D:\Projects\Apps\illumi\illumiEngine\illumiEngine\External\LightFX.dll
+  D:\Projects\Apps\illumi\illumiEngine\illumiEngine\External\RogNewmouseProtocol.dll
+  D:\Projects\Apps\illumi\illumiEngine\illumiEngine\External\SPATHA HID Library C++.dll
+  D:\Projects\Apps\illumi\illumiEngine\illumiEngine\External\SPATHA SYNC Dll.dll
+  D:\Projects\Apps\illumi\illumiEngine\illumiEngine\External\Vender.dll
+  D:\Projects\Apps\illumi\illumiEngine\illumiEngine\External\VGA_Extra.dll
+  10 File(s) copied
+  AlienFX.cpp
+  Aura.cpp
+  illumiEngine.cpp
+  Generating Code...
+  illumiEngine.vcxproj -> D:\Projects\Apps\illumi\illumiEngine\Bin\x64\Debug\illumiEngine.exe

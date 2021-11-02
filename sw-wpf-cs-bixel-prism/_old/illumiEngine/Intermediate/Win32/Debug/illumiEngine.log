@@ -1,0 +1,29 @@
+﻿  0 File(s) copied
+  pch.cpp
+  AlienFxAPI.cpp
+d:\projects\apps\prismproject\illumiengine\illumiengine\apis\alienfx\alienfxapi.cpp(53): error C2065: 'mLoaded': undeclared identifier
+d:\projects\apps\prismproject\illumiengine\illumiengine\apis\alienfx\alienfxapi.cpp(105): error C2065: 'mApp': undeclared identifier
+d:\projects\apps\prismproject\illumiengine\illumiengine\apis\alienfx\alienfxapi.cpp(107): error C2065: 'mApp': undeclared identifier
+d:\projects\apps\prismproject\illumiengine\illumiengine\apis\alienfx\alienfxapi.cpp(141): error C2065: 'mApp': undeclared identifier
+d:\projects\apps\prismproject\illumiengine\illumiengine\apis\alienfx\alienfxapi.cpp(146): warning C4244: '=': conversion from 'double' to 'unsigned char', possible loss of data
+d:\projects\apps\prismproject\illumiengine\illumiengine\apis\alienfx\alienfxapi.cpp(154): error C2065: 'mApp': undeclared identifier
+  Colors.cpp
+  AppSettings.cpp
+  API.cpp
+  AuraAPI.cpp
+d:\projects\apps\prismproject\illumiengine\illumiengine\apis\aura\auraapi.cpp(55): error C2065: 'mLoaded': undeclared identifier
+d:\projects\apps\prismproject\illumiengine\illumiengine\apis\aura\auraapi.cpp(119): error C2065: 'mApp': undeclared identifier
+d:\projects\apps\prismproject\illumiengine\illumiengine\apis\aura\auraapi.cpp(121): error C2065: 'mApp': undeclared identifier
+d:\projects\apps\prismproject\illumiengine\illumiengine\apis\aura\auraapi.cpp(163): error C2065: 'mApp': undeclared identifier
+d:\projects\apps\prismproject\illumiengine\illumiengine\apis\aura\auraapi.cpp(165): error C2065: 'mApp': undeclared identifier
+d:\projects\apps\prismproject\illumiengine\illumiengine\apis\aura\auraapi.cpp(207): error C2065: 'mApp': undeclared identifier
+d:\projects\apps\prismproject\illumiengine\illumiengine\apis\aura\auraapi.cpp(209): error C2065: 'mApp': undeclared identifier
+  illumiEngine.cpp
+d:\projects\apps\prismproject\illumiengine\illumiengine\source\illumiengine.cpp(37): warning C4305: '=': truncation from 'double' to 'float'
+d:\projects\apps\prismproject\illumiengine\illumiengine\source\illumiengine.cpp(70): error C2039: 'IsLoaded': is not a member of 'Aura::AuraAPI'
+  d:\projects\apps\prismproject\illumiengine\illumiengine\apis\aura\auraapi.h(6): note: see declaration of 'Aura::AuraAPI'
+d:\projects\apps\prismproject\illumiengine\illumiengine\source\illumiengine.cpp(71): error C2039: 'IsLoaded': is not a member of 'AlienFx::AlienFxAPI'
+  d:\projects\apps\prismproject\illumiengine\illumiengine\apis\alienfx\alienfxapi.h(6): note: see declaration of 'AlienFx::AlienFxAPI'
+d:\projects\apps\prismproject\illumiengine\illumiengine\source\illumiengine.cpp(78): error C2039: 'Setup': is not a member of 'API'
+  d:\projects\apps\prismproject\illumiengine\illumiengine\include\api.h(15): note: see declaration of 'API'
+  Generating Code...

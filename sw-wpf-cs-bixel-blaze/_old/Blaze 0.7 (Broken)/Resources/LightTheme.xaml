@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+
+    <!--Images-->
+    <BitmapImage x:Key="BlazeLogo" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="Images\BlazeLogo\Logo_Blaze_B.png"/>
+
+
+    <!--Color and brushes-->
+    <Color x:Key="BaseColor">#FFFFFFFF</Color>
+    <Color x:Key="FadeBaseColor">#000C0C0C</Color>
+    <Color x:Key="BackgroundColor">#FF191919</Color>
+    <Color x:Key="BorderColor">#FF333333</Color>
+    <Color x:Key="TextColor">#FFCCCCCC</Color>
+    <Color x:Key="HighlightColor">#FFFFFFFF</Color>
+    <Color x:Key="AccentColor">#FF0064FF</Color>
+
+    <SolidColorBrush x:Key="Base" Color="{StaticResource BaseColor}"/>
+    <SolidColorBrush x:Key="Background" Color="{StaticResource BackgroundColor}"/>
+    <SolidColorBrush x:Key="Border" Color="{StaticResource BorderColor}"/>
+    <SolidColorBrush x:Key="Mute" Color="{StaticResource BorderColor}"/>
+    <SolidColorBrush x:Key="Text" Color="{StaticResource TextColor}"/>
+    <SolidColorBrush x:Key="Highlight" Color="{StaticResource HighlightColor}"/>
+    <SolidColorBrush x:Key="Accent" Color="{StaticResource AccentColor}"/>
+
+</ResourceDictionary>

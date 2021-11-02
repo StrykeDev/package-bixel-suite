@@ -1,0 +1,26 @@
+﻿
+
+Application:
+	Wire the notifyicon context menu items.
+
+
+Main:
+	Wire the website buttons.
+	fix threading
+
+
+Cursor lock:
+	Improve the description.
+	Switch to DPI aware detection.
+
+	
+Monitor dimming:
+	Improve the description.
+	Improve the preview.
+	Implement fading speed.
+	Implement inactive dimming.
+	Implement white\blacklist
+
+Theme:
+	Make templates for everything.
+	Move resources outside the project

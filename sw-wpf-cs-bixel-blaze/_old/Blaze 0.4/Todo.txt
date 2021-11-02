@@ -1,0 +1,18 @@
+﻿Home:
+	Improve homepage
+
+
+Cursor lock:
+	Improve the description.
+	Switch to DPI aware detection.
+
+	
+Monitor dimming:
+	Improve the description.
+	Improve the preview.
+	Fix undo not resetting the list
+
+
+Theme:
+	Make templates for everything.
+	Move resources outside the project

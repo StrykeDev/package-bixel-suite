@@ -1,0 +1,119 @@
+[
+    {
+        "id": "blaze",
+        "name": "Blaze",
+        "type": "Multi-monitors manager",
+        "desc": "Make your multi-monitors experience better.",
+        "file": "BLAZE_SETUP",
+        "icon": "/products/blaze/Icon_Blaze_x256.png",
+        "banner": "/assats/banner/blaze_banner.png",
+        "features": [
+            {
+                "name": "Cursor Lock",
+                "desc": "Lock the cursor to a specified area to prevent it from accidentally stuck or get lost in other screens."
+            },
+            {
+                "name": "Monitor Dimming",
+                "desc": "Dim all the other monitors when the active application is running on fullscreen mode to reduce glare."
+            },
+            {
+                "name": "Silent",
+                "desc": "Doesn't hog the PC, Work quietly in the background and can be controlled via hotkeys."
+            }
+        ],
+        "requirements": [
+            "Windows 7 or newer",
+            ".NET Framework 4.0 or higher",
+            "More than one monitor (Optional, highly recommended)"
+        ],
+        "compatibility-note": "",
+        "compatibility": [],
+        "support": [],
+        "patch_note": [
+            {
+                "version": "Version 1.0",
+                "note": "Released!"
+            }
+        ],
+        "news": "Blaze got Released!"
+    },
+    {
+        "id": "prism",
+        "name": "Prism",
+        "type": "Light Synchronizer",
+        "desc": "Synchronize your LEDs for an amazing display.",
+        "file": "",
+        "icon": "/products/prism/Icon_Prism_x256.png",
+        "banner": "/assats/banner/prism_banner.png",
+        "features": [
+            {
+                "name": "Light Syncing",
+                "desc": "Sync your light setting across your devices from one place."
+            },
+            {
+                "name": "LED Calibration",
+                "desc": "Calibrate your LEDs to make then more uniform with each other."
+            },
+            {
+                "name": "Sources",
+                "desc": "Selection of sources like static color, Windows color, ambient color and more."
+            },
+            {
+                "name": "Effects",
+                "desc": "Selection of effects like rainbow, gradient, scan, breathing and more."
+            },
+            {
+                "name": "Sleep Mode",
+                "desc": "Dim the lights when the computer is idling."
+            },
+            {
+                "name": "Overheating Protection",
+                "desc": "Protect the LEDs from overheating which extend their lifespan."
+            }
+        ],
+        "requirements": [
+            "Windows 7 or newer",
+            ".NET Framework 4.0 or higher",
+            "At least one compatible device"
+        ],
+        "compatibility-note": "Please check that your device is supported with the providers mentioned above.",
+        "compatibility": [
+            "Asus Aura*",
+            "Alienware FX (Include ROCCAT)*",
+            "Corsair iCUE*"
+        ],
+        "support": [
+            "Add Your Game!"
+        ],
+        "patch_note": [],
+        "news": "Prism is still under development."
+    },
+    {
+        "id": "grid",
+        "name": "Grid",
+        "type": "Windows Manager",
+        "desc": "Manager you windows automatically.",
+        "file": "",
+        "icon": "/assats/icon/error/warning.png",
+        "banner": "/assats/banner/default_banner.png",
+        "features": [
+            {
+                "name": "Segments",
+                "desc": "Create layouts to quicly snap your applications to the right place."
+            },
+            {
+                "name": "Startup Location",
+                "desc": "Specified startup location and size for your applications."
+            }
+        ],
+        "requirements": [
+            "Windows 7 or newer",
+            ".NET Framework 4.0 or higher"
+        ],
+        "compatibility-note": "",
+        "compatibility": [],
+        "support": [],
+        "patch_note": [],
+        "news": "Grid is still under development."
+    }
+]

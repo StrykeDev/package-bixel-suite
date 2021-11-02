@@ -1,0 +1,112 @@
+﻿<Window x:Class="Blaze.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Blaze"
+        xmlns:views="clr-namespace:Blaze.Views"
+        xmlns:vm="clr-namespace:Blaze.ViewModels"
+        mc:Ignorable="d"
+        ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen" 
+        Width="850" Height="450"
+        Title="Blaze" FontFamily="Calibri" FontSize="12" 
+        Background="{DynamicResource BaseBrush}" Foreground="{DynamicResource TextBrush}">
+
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
+
+    <Grid MouseDown="DragWindow">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <!--Main body-->
+        <Grid Grid.RowSpan="2">
+            <TabControl Style="{DynamicResource TabMenu}">
+
+                <!--Home page-->
+                <TabItem Header="Home" Style="{DynamicResource TabMenuMainItem}" IsSelected="True" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1.5*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!--Header-->
+                        <Grid>
+                            <StackPanel>
+                                <Image Source="{DynamicResource BlazeLogo}" Width="200" RenderOptions.BitmapScalingMode="HighQuality"/>
+                                <Label Content="{Binding BuildName, Mode=OneTime}" HorizontalAlignment="Center" Foreground="{DynamicResource MuteBrush}"/>
+                            </StackPanel>
+                            <Separator VerticalAlignment="Bottom" />
+                        </Grid>
+
+                        <!--Options-->
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid>
+                                <StackPanel>
+                                    <CheckBox x:Name="cbxCursorLock" Content="Enable Cursor Lock" IsChecked="{Binding EnableCursorLock, Mode=TwoWay}"/>
+                                    <CheckBox x:Name="cbxMonitorDim" Content="Enable Monitor Dim" IsChecked="{Binding EnableMonitorDim, Mode=TwoWay}"/>
+                                    <Separator/>
+                                    <CheckBox x:Name="cbxStartMin" Content="Start minimized" IsChecked="{Binding StartMinimized, Mode=TwoWay}"/>
+                                    <CheckBox x:Name="cbxStartup" Content="Start with Windows" IsChecked="{Binding Startup, Mode=TwoWay}"/>
+                                </StackPanel>
+                            </Grid>
+
+                            <Grid Grid.Column="1">
+                                <StackPanel>
+                                    <!--Reserved-->
+                                </StackPanel>
+                            </Grid>
+                        </Grid>
+
+                        <!--Footer-->
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*"/>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Label Content="{Binding Copyright, Mode=OneTime}" Foreground="{DynamicResource MuteBrush}"/>
+
+                            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <Button x:Name="btnDonate" Content="Support us" Command="{Binding OpenDonationPage}"/>
+                                <Button x:Name="btnWebsite" Content="Get more apps" Command="{Binding OpenWebsite}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+
+
+                <!--Cursor Lock-->
+                <TabItem Header="Cursor Lock" Style="{DynamicResource TabMenuItem}">
+                    <views:CursorLock/>
+                </TabItem>
+
+
+                <!--Monitor Dim-->
+                <TabItem Header="Monitor Dim" Style="{DynamicResource TabMenuItem}">
+                    <views:MonitorDim/>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+
+        <!--Titlebar-->
+        <Grid Height="{DynamicResource TitlebarHeight}">
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Style="{DynamicResource MinimizeButton}" Command="{Binding Minimized}" />
+                <Button Style="{DynamicResource CloseButton}" Command="{Binding Close}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

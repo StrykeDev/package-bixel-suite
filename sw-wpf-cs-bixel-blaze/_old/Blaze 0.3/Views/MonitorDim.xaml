@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="Blaze.Views.MonitorDim"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Blaze.Views"
+             xmlns:converters="clr-namespace:Blaze.Converters"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="{DynamicResource Base}">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <converters:StringValue x:Key="StringValue"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Resources\DarkTheme.xaml"/>
+                <ResourceDictionary Source="..\Resources\Theme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!--Tutorial Text-->
+        <Grid>
+            <StackPanel Margin="10">
+                <TextBlock TextWrapping="Wrap">
+                    Dim inactive monitors when the active application is running on fullscreen or borderless mode.<LineBreak/>
+                    Use fade delay to minimize unwanted dimming.<LineBreak/>
+                    <LineBreak/>
+                </TextBlock>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <!--Options-->
+            <Grid Margin="10,0,5,0">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Opacity:  " />
+                        <Label Content="{Binding Value, ElementName=sldOpacity, Converter={StaticResource StringValue}, ConverterParameter=%, Mode=OneWay}"/>
+                    </StackPanel>
+                    <Slider x:Name="sldOpacity" Minimum="0" Maximum="1" Value="{Binding Path=DimOpacity, Mode=TwoWay}" LargeChange="0.1" SmallChange="0.01" IsDirectionReversed="True"/>
+                    
+                    <Separator Visibility="Hidden"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Fade delay:  " />
+                        <Label Content="{Binding Value, ElementName=sldDelay, Converter={StaticResource StringValue}, ConverterParameter=s, Mode=OneWay}"/>
+                    </StackPanel>
+                    <Slider x:Name="sldDelay" Minimum="0" Maximum="5" Value="{Binding Path=DimDelay, Mode=TwoWay}" LargeChange="0.1" SmallChange="0.01"/>
+
+                    <Separator Visibility="Hidden"/>
+
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Fading speed:  " />
+                        <Label Content="{Binding Value, ElementName=sldFadeSpeed, Converter={StaticResource StringValue}, ConverterParameter=s, Mode=OneWay}"/>
+                    </StackPanel>
+                    <Slider x:Name="sldFadeSpeed" Minimum="0" Maximum="1" Value="{Binding Path=DimSpeed, Mode=TwoWay}" LargeChange="0.1" SmallChange="0.01"/>
+                </StackPanel>
+            </Grid>
+
+            <!--Preview-->
+            <Grid Grid.Column="1" Margin="5,0,10,0">
+                <Grid Height="75" Panel.ZIndex="99" VerticalAlignment="Top" Margin="-1">
+                    <Grid.Background>
+                        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                            <GradientStop Color="{StaticResource BaseColor}" Offset="0"/>
+                            <GradientStop Color="{StaticResource FadeBaseColor}" Offset="1" />
+                        </LinearGradientBrush>
+                    </Grid.Background>
+                    <Label Content="Preview" Margin="10,0"/>
+                </Grid>
+                <Image Source="..\Assats\Images\MonitorDim\ex_image.jpg" RenderOptions.BitmapScalingMode="HighQuality" Stretch="UniformToFill" Panel.ZIndex="0" />
+                <Rectangle Opacity="{Binding Value, ElementName=sldOpacity, Mode=OneWay}" Fill="Black"/>
+            </Grid>
+        </Grid>
+
+        <!--Submit-->
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10" >
+                <Button x:Name="btnApply" Content="Apply" TabIndex="0" Click="BtnApply_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

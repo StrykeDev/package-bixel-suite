@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Blaze">
+
+    <SolidColorBrush x:Key="Base" Color="#FF0C0C0C"/>
+    <SolidColorBrush x:Key="Background" Color="#FF191919"/>
+    <SolidColorBrush x:Key="Border" Color="#FF333333"/>
+    <SolidColorBrush x:Key="Mute" Color="#FF333333"/>
+    <SolidColorBrush x:Key="Highlight" Color="#FF7F7F7F"/>
+    <SolidColorBrush x:Key="Accent" Color="#FF0064FF"/>
+    
+    <BitmapImage x:Key="BlazeLogo" CreateOptions="IgnoreImageCache" CacheOption="OnLoad" UriSource="..\Assats\Images\BlazeLogo\Logo_Blaze_G.png"/>
+
+</ResourceDictionary>
