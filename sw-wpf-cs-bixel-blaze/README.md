@@ -6,3 +6,7 @@
 # Blaze
 
 A Multi-monitors manager software.
+
+## Instalation
+
+Compile and run.
